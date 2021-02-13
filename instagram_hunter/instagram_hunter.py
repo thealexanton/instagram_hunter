@@ -22,7 +22,7 @@ def see_if_username_excists(username):
         followers = profile.followers
         url = f"https://instagram.com/{username}"
         print(
-            f'The user {username} excists and has {followers} followers. The link is: {url}')
+            f'[+] The user {username} excists and has {followers} followers. The link is: {url}')
     except:
         print(f"[-] The username {username} does not excist.")
 
