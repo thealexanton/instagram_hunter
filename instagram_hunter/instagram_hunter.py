@@ -1,4 +1,4 @@
-import requests
+import instaloader
 
 print("""   _____           _                                    _                 _            
  |_   _|         | |                                  | |               | |           
@@ -8,7 +8,7 @@ print("""   _____           _                                    _              
  |_____|_| |_|___/\__\__,_|\__, |_|  \__,_|_| |_| |_| |_| |_|\__,_|_| |_|\__\___|_|   
                             __/ |                                                     
                            |___/                                                     
-                                                                  follow me on github
+                                                    follow theastronomer123 on github
                                                                      
                            
                            
@@ -16,27 +16,55 @@ print("""   _____           _                                    _              
 
 
 def see_if_username_excists(username):
-    username = "thealexanton"
-    response = requests.get("https://instagram.com/" + username + "/")
-    if response.status_code == 404:
-        print(f"The username {username} is not taken")
-    else:
-        print(f"The username {username} excists")
+    try:
+        L = instaloader.Instaloader()
+        profile = instaloader.Profile.from_username(L.context, username)
+        followers = profile.followers
+        url = f"https://instagram.com/{username}"
+        print(
+            f'The user {username} excists and has {followers} followers. The link is: {url}')
+    except:
+        print(f"[-] The username {username} does not excist.")
 
 
-question1 = input("Do you want to check for a singe username? (y, n)")
+question1 = input("Do you want to check for a username combinations (y, n)")
 if question1 == "y":
-    first_name = input("What is the first name?").lower()
-    last_name = input("What is the last name?").lower()
-    possible_usernames = []
-
+    first_name = input("What is the first name? \n").lower()
+    last_name = input("What is the last name? \n").lower()
     for step in range(10):
         if step == 0:
             username = first_name + last_name
-            possible_usernames.append(username)
+            see_if_username_excists(username)
+        if step == 1:
+            username = '_' + last_name + '_'
+            see_if_username_excists(username)
+        if step == 2:
+            username = first_name[0] + '.' + last_name
+            see_if_username_excists(username)
+        if step == 3:
+            username = first_name[0] + '_' + last_name
+            see_if_username_excists(username)
+        if step == 4:
+            username = last_name + 'priv'
+            see_if_username_excists(username)
+        if step == 5:
+            username = '_' + last_name
+            see_if_username_excists(username)
+        if step == 6:
+            username = last_name + last_name[-1]
+            see_if_username_excists(username)
+        if step == 7:
+            username = '_' + last_name + last_name[-1]
+            see_if_username_excists(username)
+        if step == 8:
+            username = first_name[0] + last_name
             see_if_username_excists(username)
 elif question1 == "n":
-    single_username = input("Enter username:").lower()
-    see_if_username_excists(single_username)
+    usernames = input(
+        "Enter username(s). Use spaces to seperate them: \n").lower()
+    actual_usernames = usernames.split()
+    for step in range(len(actual_usernames)):
+        see_if_username_excists(actual_usernames[step])
+
 else:
     print("Please enter correct information")
