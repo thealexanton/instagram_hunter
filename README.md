@@ -1,1 +1,1 @@
-﻿# Instagram-Hunter
+﻿# Instagram Hunter
