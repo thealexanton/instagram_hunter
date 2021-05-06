@@ -61,6 +61,7 @@ if question1 == "y":
             see_if_username_exists(username)
         if step == 9:
             username = first_name + '.' + last_name
+            see_if_username_exists(username)
 elif question1 == "n":
     usernames = input(
         "Enter username(s). Use spaces to seperate them: \n").lower()
