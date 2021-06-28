@@ -1,4 +1,4 @@
-﻿# Instagram-Hunter
+# Instagram-Hunter
 Instagram-Hunter is a simple tool that discovers instagram accounts.
 
 ## Installation
